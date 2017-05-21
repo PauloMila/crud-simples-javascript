@@ -106,10 +106,32 @@ function CloseInput() {
     document.getElementById('spoiler').style.display = 'none';
 }
 
-This.Edit = function (item) {
-    alerta (item);
+this.Edit = function (item) {
+    alert (item);
 }
 
+this.Edit = function(item) {
+    var el = document.getElementById('Edit-name');
+    //Display value in the field
+    el.value = this.countries[item];
+    //Display fields
+    document.getElementById('spoiler').style.display = 'block';
+    self = this;
+
+    document.getElementById('saveEdit').onsubmit = function() {
+        //pegar o valor
+        var country = el.value;
+
+        if (country) {
+            //edita valor
+            self.countries.splice(item, 1, country.trim());
+            //Display a nova lista
+            self.FetchALL();
+            //Hide fields
+            CloseInput();
+        }
+    }
+};
 
 </script>
 
