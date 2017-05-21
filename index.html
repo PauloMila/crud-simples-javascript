@@ -24,6 +24,45 @@ var app = new function() {
 
     //code
 }
+//selecionando elementos onde queremos exibir dados
+this.el = document.getElementById('countries');
+
+//dados em uma matriz simples
+this.countries = ['France', 'Germany', 'England', 'Spain', 'Belgium', 'Italy', 'Portugal', 'Irland', 'Luxemburg'];
+
+//inserindo cotador em uma função
+this.Count = function(data) {
+    var el = document.getElementById('counter');
+    var name = 'country';
+
+    if (data) {
+        if (data > 1) {
+            name = 'countries';
+        }
+        el.innerHTML = data + ' ' + name;
+    }   else {
+        el.innerHTML = 'No ' + name;
+    }
+};
+
+//inciando CRUD
+this.FetchALL = function() {
+    var data = ' ';
+
+    if (this.countries.length > 0) {
+        for(i = 0; i < this.countries.length; i++) {
+            data += '<tr>';
+            data += '<tr>' + this.countries[i] + '</td>';
+            data += '</tr>';
+        }
+    }
+
+    this.Count(this.countries.length);
+    return this.el.innerHTML = data;
+};
+
+app.FetchALL();
+
 
 </script>
 
