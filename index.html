@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+<meta charset="utf-8">
 
 <form action="javascript:void(0);" method="POST" onsubmit="app.Add()">
     <input type="text" id="add-name" placeholder="New country">
@@ -100,6 +99,7 @@ this.Add = function() {
         this.FetchALL();
     }
     data += '<td><button onclick="app.Edit (' + i + ')">Edit</button></td>';
+    data += '<td><button onclick="app.Delete(' + i + ')">Delete</button></td>';
 }
 
 function CloseInput() {
@@ -133,7 +133,13 @@ this.Edit = function(item) {
     }
 };
 
+this.Delete = function (item) {
+    //Delete the current row
+    this.countries.splice(item, 1);
+    //Display nova lista
+    this.FetchALL();
+};
+
 </script>
 
 </body>
-</html>
